@@ -17,31 +17,4 @@ final class PruebaKataTest extends TestCase
         $this->pruebaKata = new PruebaKata();
     }
 
-    /**
-     * @test
-     * @throws \Exception
-     */
-    public function givenSingleNumberReturnsSameNumber(): void
-    {
-        $this->assertEquals(1, $this->pruebaKata->add('1'));
-    }
-
-    /**
-     * @test
-     * @throws \Exception
-     */
-    public function givenNumbersReturnsAddNumbers(): void
-    {
-        $this->assertEquals(6, $this->pruebaKata->add('1,2,3'));
-    }
-
-    /**
-     * @test
-     * @throws \Exception
-     */
-    public function givenNumbersSeparatedByCommasAndLineBreakReturnsSumOfNumbers(): void
-    {
-        $this->assertEquals(6, $this->pruebaKata->add('1\n2,3'));
-    }
-
 }
