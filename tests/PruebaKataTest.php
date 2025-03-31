@@ -9,12 +9,5 @@ use PHPUnit\Framework\TestCase;
 
 final class PruebaKataTest extends TestCase
 {
-    private PruebaKata $pruebaKata;
-
-    protected function setUp(): void
-    {
-        parent::setUp();
-        $this->pruebaKata = new PruebaKata();
-    }
 
 }
