@@ -8,14 +8,14 @@ class ShoppingCart
     public function modifyShoppingCart($product)
     {
         if (strpos($product, 'añadir') !== false) {
-            $product = str_replace('añadir ', '', $product);
+            $product = $this->suprimirTextoAnnadir($product);
             $productParts = explode(' ', $product);
 
             $this->annadirCantidadAlProducto($productParts);
         }
 
         else if (strpos($product, 'eliminar') !== false) {
-            $product = str_replace('eliminar ', '', $product);
+            $product = $this->suprimirTextoEliminar($product);
             $productParts = explode(' ', $product);
 
             if ($this->existeProducto($productParts[0])) {
@@ -68,6 +68,26 @@ class ShoppingCart
     public function existeProducto($key): bool
     {
         return array_key_exists($key, $this->shoppingList);
+    }
+
+    /**
+     * @param $product
+     * @return array|string|string[]
+     */
+    public function suprimirTextoAnnadir($product): string|array
+    {
+        $product = str_replace('añadir ', '', $product);
+        return $product;
+    }
+
+    /**
+     * @param $product
+     * @return array|string|string[]
+     */
+    public function suprimirTextoEliminar($product): string|array
+    {
+        $product = str_replace('eliminar ', '', $product);
+        return $product;
     }
 
 
