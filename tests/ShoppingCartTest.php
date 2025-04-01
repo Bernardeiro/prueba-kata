@@ -32,8 +32,9 @@ final class ShoppingCartTest extends TestCase
         $shoppingCart->modifyShoppingCart('añadir pan ');
         $shoppingCart->modifyShoppingCart('añadir pan 1');
         $shoppingCart->modifyShoppingCart('añadir chocolate ');
-        $result = $shoppingCart->modifyShoppingCart('eliminar pan');
-        $this->assertEquals('chocolate x1', $result);
+        $shoppingCart->modifyShoppingCart('eliminar pan');
+        $result = $shoppingCart->modifyShoppingCart('eliminar chocolate');
+        $this->assertEquals('', $result);
 
     }
 

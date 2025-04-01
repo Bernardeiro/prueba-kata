@@ -19,7 +19,14 @@ class ShoppingCart
         }
 
         else if (strpos($product, 'eliminar') !== false) {
-            return 'chocolate x1';
+            $product = str_replace('eliminar ', '', $product);
+            $productParts = explode(' ', $product);
+
+            if (array_key_exists($productParts[0], $this->shoppingList)) {
+                unset($this->shoppingList[$productParts[0]]);
+            } else{
+                return 'El producto seleccionado no existe';
+            }
         }
 
         ksort($this->shoppingList);
