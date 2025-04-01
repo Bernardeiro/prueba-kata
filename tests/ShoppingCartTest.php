@@ -9,32 +9,32 @@ use PHPUnit\Framework\TestCase;
 
 final class ShoppingCartTest extends TestCase
 {
-    /**
-     * @test
-     */
-    public function givenProductsReturnsShoppingCartStatus(): void
+    public ShoppingCart $shoppingCart;
+    protected function setUp(): void
     {
-        $shoppingCart = new ShoppingCart();
-
-        $shoppingCart->modifyShoppingCart('añadir pan ');
-        $shoppingCart->modifyShoppingCart('añadir pan 1');
-        $result = $shoppingCart->modifyShoppingCart('añadir chocolate ');
-        $this->assertEquals('chocolate x1, pan x3', $result);
+        parent::setUp();
+        $this->shoppingCart = new ShoppingCart();
+        $this->shoppingCart->modifyShoppingCart('añadir pan ');
+        $this->shoppingCart->modifyShoppingCart('añadir pan 1');
+        $this->shoppingCart->modifyShoppingCart('añadir chocolate ');
     }
 
     /**
      * @test
      */
-    public function givenProductsToAddAndOneToDeleteReturnsShoppingCartStatus(): void
+    public function givenProductsReturnsShoppingCartStatus(): void
     {
-        $shoppingCart = new ShoppingCart();
 
-        $shoppingCart->modifyShoppingCart('añadir pan ');
-        $shoppingCart->modifyShoppingCart('añadir pan 1');
-        $shoppingCart->modifyShoppingCart('añadir chocolate ');
-        $shoppingCart->modifyShoppingCart('eliminar pan');
-        $result = $shoppingCart->modifyShoppingCart('eliminar chocolate');
-        $this->assertEquals('', $result);
+        $this->assertEquals('chocolate x4, pan x3', $this->shoppingCart->modifyShoppingCart('añadir chocolate 2'));
+    }
+
+    /**
+     * @test
+     */
+    public function givenProductsToAddAndManyToDeleteReturnsShoppingCartStatus(): void
+    {
+        $this->shoppingCart->modifyShoppingCart('eliminar pan');
+        $this->assertEquals('', $this->shoppingCart->modifyShoppingCart('eliminar chocolate'));
 
     }
 
