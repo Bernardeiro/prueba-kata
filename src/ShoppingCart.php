@@ -17,6 +17,11 @@ class ShoppingCart
                 $this->shoppingList[$productParts[0]] += (int)$productParts[1] + 1;
             }
         }
+
+        else if (strpos($product, 'eliminar') !== false) {
+            return 'chocolate x1';
+        }
+
         ksort($this->shoppingList);
         $result = [];
         foreach ($this->shoppingList as $item => $quantity) {

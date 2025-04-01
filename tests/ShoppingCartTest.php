@@ -12,14 +12,30 @@ final class ShoppingCartTest extends TestCase
     /**
      * @test
      */
-    public function givenProductReturnsShoppingCartStatus(): void
+    public function givenProductsReturnsShoppingCartStatus(): void
     {
         $shoppingCart = new ShoppingCart();
 
         $shoppingCart->modifyShoppingCart('añadir pan ');
-        $result = $shoppingCart->modifyShoppingCart('añadir pan ');
+        $shoppingCart->modifyShoppingCart('añadir pan 1');
         $result = $shoppingCart->modifyShoppingCart('añadir chocolate ');
-        $this->assertEquals('chocolate x1, pan x2', $result);
+        $this->assertEquals('chocolate x1, pan x3', $result);
     }
+
+    /**
+     * @test
+     */
+    public function givenProductsToAddAndOneToDeleteReturnsShoppingCartStatus(): void
+    {
+        $shoppingCart = new ShoppingCart();
+
+        $shoppingCart->modifyShoppingCart('añadir pan ');
+        $shoppingCart->modifyShoppingCart('añadir pan 1');
+        $shoppingCart->modifyShoppingCart('añadir chocolate ');
+        $result = $shoppingCart->modifyShoppingCart('eliminar pan');
+        $this->assertEquals('chocolate x1', $result);
+
+    }
+
 
 }
