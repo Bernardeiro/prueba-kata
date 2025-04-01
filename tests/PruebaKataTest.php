@@ -9,5 +9,5 @@ use PHPUnit\Framework\TestCase;
 
 final class PruebaKataTest extends TestCase
 {
-
+    
 }
