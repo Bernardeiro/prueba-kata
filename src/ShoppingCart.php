@@ -25,7 +25,7 @@ class ShoppingCart
             }
         }
         else if (strpos($product, 'vaciar') !== false) {
-            return '';
+            $this->shoppingList = [];
         }
         else {
             return 'El comando no existe';
