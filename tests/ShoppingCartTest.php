@@ -43,7 +43,15 @@ final class ShoppingCartTest extends TestCase
     public function givenAnyProductThatDoesntExistReturnsMessage(): void
     {
         $this->assertEquals('El producto seleccionado no existe', $this->shoppingCart->modifyShoppingCart('eliminar huevo'));
-
     }
+
+    /**
+     * @test
+     */
+    public function givenEmptyOrderReturnsCartEmptied(): void
+    {
+        $this->assertEquals('', $this->shoppingCart->modifyShoppingCart('vaciar'));
+    }
+
 
 }

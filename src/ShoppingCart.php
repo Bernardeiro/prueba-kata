@@ -24,7 +24,12 @@ class ShoppingCart
                 return 'El producto seleccionado no existe';
             }
         }
-
+        else if (strpos($product, 'vaciar') !== false) {
+            return '';
+        }
+        else {
+            return 'El comando no existe';
+        }
         $result = $this->prepararListadoDelCarrito();
 
         return implode(', ', $result);
@@ -64,4 +69,6 @@ class ShoppingCart
     {
         return array_key_exists($key, $this->shoppingList);
     }
+
+
 }
