@@ -16,7 +16,7 @@ final class ShoppingCartTest extends TestCase
     {
         $shoppingCart = new ShoppingCart();
 
-        $result = $shoppingCart->modifyShoppingCart('añadir pan');
+        $result = $shoppingCart->modifyShoppingCart('añadir pan ');
 
         $this->assertEquals('pan x1', $result);
     }
